@@ -1,3 +1,4 @@
 <resources>
     <string name="app_name">Project_Mobile_Bluedoll</string>
+    <string name="splash_screen_title">Bluedoll</string>
 </resources>
