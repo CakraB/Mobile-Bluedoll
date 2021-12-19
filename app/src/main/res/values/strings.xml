@@ -1,4 +1,9 @@
 <resources>
-    <string name="app_name">Project_Mobile_Bluedoll</string>
+    <string name="app_name">Bluedoll</string>
     <string name="splash_screen_title">Bluedoll</string>
+    <string name="login_email_hint">Email</string>
+    <string name="login_password_hint">Password</string>
+    <string name="login_button">Login</string>
+    <string name="login_have_account">Dont have an account yet?</string>
+    <string name="login_register_here">Register Here</string>
 </resources>
