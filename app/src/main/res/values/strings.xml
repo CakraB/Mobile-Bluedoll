@@ -1,9 +1,22 @@
 <resources>
     <string name="app_name">Bluedoll</string>
     <string name="splash_screen_title">Bluedoll</string>
+    <!-- Login -->
     <string name="login_email_hint">Email</string>
     <string name="login_password_hint">Password</string>
     <string name="login_button">Login</string>
     <string name="login_have_account">Dont have an account yet?</string>
     <string name="login_register_here">Register Here</string>
+    <!-- Register -->
+    <string name="registration_title_hint">Register</string>
+    <string name="registration_fullname_hint">Fullname</string>
+    <string name="registration_email_hint">Email</string>
+    <string name="registration_password_hint">Password</string>
+    <string name="registration_passwordconf_hint">Confirm Password</string>
+    <string name="registration_gender_male">Male</string>
+    <string name="registration_gender_female">Female</string>
+    <string name="registration_terms_hint">I agree on the terms and conditions</string>
+    <string name="registration_button">Register</string>
+    <string name="registration_already_account">Already have an account?</string>
+    <string name="registration_login_here">Login Here</string>
 </resources>

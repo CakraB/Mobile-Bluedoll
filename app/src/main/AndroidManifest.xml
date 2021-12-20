@@ -10,6 +10,9 @@
         android:supportsRtl="true"
         android:theme="@style/Theme.Project_Mobile_Bluedoll">
         <activity
+            android:name=".RegisterActivity"
+            android:theme="@style/Theme.Project_Mobile_Bluedoll.NoActionBar" />
+        <activity
             android:name=".LoginActivity"
             android:theme="@style/Theme.Project_Mobile_Bluedoll.NoActionBar" />
         <activity
@@ -20,6 +23,7 @@
             android:theme="@style/Theme.Project_Mobile_Bluedoll.NoActionBar">
             <intent-filter>
                 <action android:name="android.intent.action.MAIN" />
+
                 <category android:name="android.intent.category.LAUNCHER" />
             </intent-filter>
         </activity>

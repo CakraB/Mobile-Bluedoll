@@ -1,0 +1,149 @@
+<?xml version="1.0" encoding="utf-8"?>
+<LinearLayout xmlns:android="http://schemas.android.com/apk/res/android"
+    xmlns:tools="http://schemas.android.com/tools"
+    android:layout_width="match_parent"
+    android:layout_height="match_parent"
+    android:gravity="center"
+    android:orientation="vertical"
+    android:padding="40dp"
+    tools:context=".RegisterActivity">
+
+    <TextView
+        android:id="@+id/text_title"
+        android:layout_width="match_parent"
+        android:layout_height="wrap_content"
+        android:layout_marginBottom="16dp"
+        android:fontFamily="@font/poppinssemibold"
+        android:gravity="center"
+        android:text="@string/registration_title_hint"
+        android:textColor="@color/purple_700"
+        android:textSize="32sp" />
+
+    <EditText
+        android:id="@+id/edit_name"
+        android:layout_width="match_parent"
+        android:layout_height="wrap_content"
+        android:layout_marginBottom="16dp"
+        android:drawableStart="@drawable/ic_user"
+        android:drawablePadding="12dp"
+        android:fontFamily="@font/poppinsreguler"
+        android:hint="@string/registration_fullname_hint"
+        android:maxLines="1" />
+
+    <EditText
+        android:id="@+id/edit_email"
+        android:layout_width="match_parent"
+        android:layout_height="wrap_content"
+        android:layout_marginBottom="16dp"
+        android:drawableStart="@drawable/ic_email"
+        android:drawablePadding="12dp"
+        android:fontFamily="@font/poppinsreguler"
+        android:hint="@string/registration_email_hint"
+        android:maxLines="1" />
+
+    <EditText
+        android:id="@+id/edit_password"
+        android:layout_width="match_parent"
+        android:layout_height="wrap_content"
+        android:layout_marginBottom="16dp"
+        android:drawableStart="@drawable/ic_password"
+        android:drawablePadding="12dp"
+        android:fontFamily="@font/poppinsreguler"
+        android:hint="@string/registration_password_hint"
+        android:inputType="textPassword"
+        android:maxLines="1" />
+
+    <EditText
+        android:id="@+id/edit_password_confirm"
+        android:layout_width="match_parent"
+        android:layout_height="wrap_content"
+        android:layout_marginBottom="16dp"
+        android:drawableStart="@drawable/ic_password"
+        android:drawablePadding="12dp"
+        android:fontFamily="@font/poppinsreguler"
+        android:hint="@string/registration_passwordconf_hint"
+        android:inputType="textPassword"
+        android:maxLines="1" />
+
+    <RadioGroup
+        android:id="@+id/radio_gender"
+        android:layout_width="match_parent"
+        android:layout_height="wrap_content"
+        android:layout_marginBottom="16dp"
+        android:orientation="horizontal">
+
+        <RadioButton
+            android:id="@+id/radio_male"
+            android:layout_width="wrap_content"
+            android:layout_height="32dp"
+            android:buttonTint="@color/purple_700"
+            android:fontFamily="@font/poppinsreguler"
+            android:paddingRight="20dp"
+            android:text="@string/registration_gender_male" />
+
+        <RadioButton
+            android:id="@+id/radio_female"
+            android:layout_width="wrap_content"
+            android:layout_height="32dp"
+            android:buttonTint="@color/purple_700"
+            android:fontFamily="@font/poppinsreguler"
+            android:text="@string/registration_gender_female" />
+
+    </RadioGroup>
+
+    <!--    <EditText-->
+    <!--        android:id="@+id/edit_birthday"-->
+    <!--        android:layout_width="match_parent"-->
+    <!--        android:layout_height="wrap_content"-->
+    <!--        android:layout_marginBottom="12dp"-->
+    <!--        android:drawableStart="@drawable/ic_baseline_calendar_today_24"-->
+    <!--        android:drawablePadding="12dp"-->
+    <!--        android:fontFamily="@font/poppinsreguler"-->
+    <!--        android:hint="@string/registration_birth_hint"-->
+    <!--        android:inputType="text"-->
+    <!--        android:maxLines="1"-->
+    <!--        android:onClick="showDatePickerDialog" />-->
+
+    <CheckBox
+        android:id="@+id/check_terms"
+        android:layout_width="match_parent"
+        android:layout_height="32dp
+"
+        android:layout_marginBottom="16dp"
+        android:buttonTint="@color/purple_700"
+        android:fontFamily="@font/poppinsreguler"
+        android:text="@string/registration_terms_hint" />
+
+    <Button
+        android:id="@+id/button_register"
+        android:layout_width="match_parent"
+        android:layout_height="wrap_content"
+        android:layout_marginBottom="16dp"
+        android:backgroundTint="@color/purple_700"
+        android:fontFamily="@font/poppinssemibold"
+        android:text="@string/registration_button"
+        android:textColor="@color/white" />
+
+    <LinearLayout
+        android:layout_width="match_parent"
+        android:layout_height="wrap_content"
+        android:gravity="center">
+
+        <TextView
+            android:layout_width="wrap_content"
+            android:layout_height="wrap_content"
+            android:fontFamily="@font/poppinsreguler"
+            android:paddingRight="4dp"
+            android:text="@string/registration_already_account" />
+
+        <TextView
+            android:id="@+id/text_login_here"
+            android:layout_width="wrap_content"
+            android:layout_height="wrap_content"
+            android:fontFamily="@font/poppinssemibold"
+            android:text="@string/registration_login_here"
+            android:textColor="@color/purple_700" />
+
+    </LinearLayout>
+
+</LinearLayout>
