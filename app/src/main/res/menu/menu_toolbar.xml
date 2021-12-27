@@ -1,0 +1,18 @@
+<?xml version="1.0" encoding="utf-8"?>
+<menu xmlns:android="http://schemas.android.com/apk/res/android">
+
+    <item
+        android:id="@+id/option_view_all_dolls"
+        android:fontFamily="@font/poppinsreguler"
+        android:title="View All Dolls" />
+
+    <item
+        android:id="@+id/option_create"
+        android:fontFamily="@font/poppinsreguler"
+        android:title="Insert Dolls" />
+    <item
+        android:id="@+id/option_logout"
+        android:fontFamily="@font/poppinsreguler"
+        android:title="Logout" />
+
+</menu>

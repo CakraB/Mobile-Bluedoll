@@ -10,6 +10,19 @@
         android:supportsRtl="true"
         android:theme="@style/Theme.Project_Mobile_Bluedoll">
         <activity
+            android:name=".AboutActivity"
+            android:parentActivityName=".MainActivity"
+            android:theme="@style/Theme.Project_Mobile_Bluedoll.NoActionBar" />
+        <activity
+            android:name=".ModifyActivity"
+            android:parentActivityName=".MainActivity"
+            android:theme="@style/Theme.Project_Mobile_Bluedoll.NoActionBar" />
+        <activity
+            android:name=".DetailActivity"
+            android:parentActivityName=".MainActivity"
+            android:theme="@style/Theme.Project_Mobile_Bluedoll.NoActionBar" />
+        <activity android:name=".DollAdapter" />
+        <activity
             android:name=".RegisterActivity"
             android:theme="@style/Theme.Project_Mobile_Bluedoll.NoActionBar" />
         <activity

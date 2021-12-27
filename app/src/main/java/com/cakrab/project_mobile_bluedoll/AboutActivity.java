@@ -15,7 +15,7 @@ import androidx.drawerlayout.widget.DrawerLayout;
 
 import com.google.android.material.navigation.NavigationView;
 
-public class MainActivity extends AppCompatActivity {
+public class AboutActivity extends AppCompatActivity {
 
     DrawerLayout drawerMenu;
     ActionBarDrawerToggle drawerToggle;
@@ -25,7 +25,7 @@ public class MainActivity extends AppCompatActivity {
     @Override
     protected void onCreate(Bundle savedInstanceState) {
         super.onCreate(savedInstanceState);
-        setContentView(R.layout.activity_main);
+        setContentView(R.layout.activity_about);
         init();
         setDrawerToggle();
     }
@@ -37,7 +37,7 @@ public class MainActivity extends AppCompatActivity {
         toolbarMenu.setTitleTextColor(getResources().getColor(R.color.white));
         toolbarMenu.setOverflowIcon(getDrawable(R.drawable.ic_more));
         // Init & Settings Drawer Menu
-        drawerMenu = findViewById(R.id.drawer_home);
+        drawerMenu = findViewById(R.id.drawer_about);
         drawerToggle = new ActionBarDrawerToggle(this, drawerMenu, toolbarMenu, R.string.open_menu, R.string.close_menu);
         // Change Hamburger Color
         drawerToggle.getDrawerArrowDrawable().setColor(getResources().getColor(R.color.white));
@@ -67,14 +67,13 @@ public class MainActivity extends AppCompatActivity {
                 }
                 // Move to Login Activity
                 if (itemId == R.id.option_logout) {
-                    Intent u = new Intent(MainActivity.this, LoginActivity.class);
-                    Toast.makeText(MainActivity.this, "You Sign out Successfully", Toast.LENGTH_SHORT).show();
+                    Intent u = new Intent(AboutActivity.this, LoginActivity.class);
+                    Toast.makeText(AboutActivity.this, "You Sign out Successfully", Toast.LENGTH_SHORT).show();
                     startActivity(u);
                 }
                 return true;
             }
         });
-
     }
 
     // Set Menu Layout Kebab Menu
@@ -89,7 +88,7 @@ public class MainActivity extends AppCompatActivity {
     public boolean onOptionsItemSelected(MenuItem item) {
         int itemId = item.getItemId();
         if (itemId == R.id.option_location) {
-            Intent l = new Intent(MainActivity.this, AboutActivity.class);
+            Intent l = new Intent(AboutActivity.this, AboutActivity.class);
             startActivity(l);
         }
         return super.onOptionsItemSelected(item);

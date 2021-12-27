@@ -2,10 +2,11 @@
 <androidx.drawerlayout.widget.DrawerLayout xmlns:android="http://schemas.android.com/apk/res/android"
     xmlns:app="http://schemas.android.com/apk/res-auto"
     xmlns:tools="http://schemas.android.com/tools"
-    android:id="@+id/drawer_home"
+    android:id="@+id/drawer_about"
     android:layout_width="match_parent"
     android:layout_height="match_parent"
-    tools:context=".MainActivity"
+    android:gravity="center_horizontal"
+    tools:context=".AboutActivity"
     tools:openDrawer="start">
 
     <LinearLayout
@@ -21,19 +22,37 @@
             android:layout_height="wrap_content"
             android:layout_marginBottom="10dp"
             android:fontFamily="@font/poppinssemibold"
-            android:text="@string/view_all_dolls"
+            android:text="@string/about_doll_title"
             android:textColor="@color/purple_700"
             android:textSize="24sp" />
 
-        <ListView
-            android:id="@+id/list_all_dolls"
+        <TextView
+            android:id="@+id/text_subtitle"
             android:layout_width="match_parent"
-            android:layout_height="wrap_content" />
+            android:layout_height="wrap_content"
+            android:layout_gravity="center_vertical|end"
+            android:layout_marginBottom="20dp"
+            android:fontFamily="@font/poppinsreguler"
+            android:text="@string/about_doll_subtitle"
+            android:textColor="@color/black"
+            android:textSize="16sp" />
 
+        <ImageView
+            android:layout_width="match_parent"
+            android:layout_height="240dp"
+            android:layout_gravity="center"
+            android:src="@drawable/ic_launcher_background" />
+
+        <!--        <Button-->
+        <!--            android:id="@+id/button_detail_back"-->
+        <!--            android:layout_width="match_parent"-->
+        <!--            android:layout_height="wrap_content"-->
+        <!--            android:layout_marginTop="24dp"-->
+        <!--            android:text="Back"/>-->
     </LinearLayout>
 
     <!--   Put Content Before the Drawer Menu, If Not The Drawer is can't be clicked
-           It is affected the Z-Index of Component -->
+          It is affected the Z-Index of Component -->
 
     <include
         layout="@layout/menu_drawer"

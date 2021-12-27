@@ -19,4 +19,25 @@
     <string name="registration_button">Register</string>
     <string name="registration_already_account">Already have an account?</string>
     <string name="registration_login_here">Login Here</string>
+    <!--  Title Activity String  -->
+    <string name="view_all_dolls">List All Dolls</string>
+    <string name="view_doll_detail">Doll Detail</string>
+    <!--  Modify Activity String  -->
+    <string name="modify_title">Modify Doll</string>
+    <string name="modify_name_hint">Doll Name</string>
+    <string name="modify_desc_hint">Doll Description</string>
+    <string name="modify_button_save">Save</string>
+    <string name="modify_button_cancel">Cancel</string>
+    <!--  About Activity String  -->
+    <string name="about_doll_title">About Us</string>
+    <string name="about_doll_subtitle">
+        BlueDoll is one of the most famous company which provides high quality dolls worldwide.
+        BlueDoll always give their customer a good product and services.
+    </string>
+    <string name="about_doll_menu">Our Location</string>
+    <!-- Drawer -->
+    <string name="creator_group">Kelompok 2</string>
+    <string name="creator_member">Cakra, Alvin, Eurico</string>
+    <string name="open_menu" />
+    <string name="close_menu" />
 </resources>
