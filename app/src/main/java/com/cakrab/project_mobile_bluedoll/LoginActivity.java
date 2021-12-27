@@ -42,10 +42,6 @@ public class LoginActivity extends AppCompatActivity {
                     Toast.makeText(LoginActivity.this, "Email must be filled", Toast.LENGTH_SHORT).show();
                     return;
                 }
-//                    else if (!users.contains(getEmail)) {
-//                        Toast.makeText(LoginActivity.this, "Your Email is not Registered", Toast.LENGTH_SHORT).show();
-//                        return;
-//                    }
             } catch (Exception e) {
                 e.printStackTrace();
                 Toast.makeText(LoginActivity.this, "Error Found!, Please Try Again", Toast.LENGTH_SHORT).show();
@@ -56,10 +52,6 @@ public class LoginActivity extends AppCompatActivity {
                     Toast.makeText(LoginActivity.this, "Password must be filled", Toast.LENGTH_SHORT).show();
                     return;
                 }
-//                    else if (!users.contains(getPassword)) {
-//                        Toast.makeText(LoginActivity.this, "Your Password is Incorrect", Toast.LENGTH_SHORT).show();
-//                        return;
-//                    }
             } catch (Exception e) {
                 e.printStackTrace();
                 Toast.makeText(LoginActivity.this, "Error Found!, Please Try Again", Toast.LENGTH_SHORT).show();

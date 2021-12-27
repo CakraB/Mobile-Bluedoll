@@ -70,10 +70,6 @@ public class RegisterActivity extends AppCompatActivity {
                     Toast.makeText(RegisterActivity.this, "Email is invalid format", Toast.LENGTH_SHORT).show();
                     return;
                 }
-//                    else if (users.contains(getEmail)) {
-//                        Toast.makeText(RegisterActivity.this, "Email is already exist", Toast.LENGTH_SHORT).show();
-//                        return;
-//                    }
             } catch (Exception e) {
                 e.printStackTrace();
                 Toast.makeText(RegisterActivity.this, "Error Found!, Please Try Again", Toast.LENGTH_SHORT).show();
@@ -117,7 +113,6 @@ public class RegisterActivity extends AppCompatActivity {
                 return;
             }
             // Validate Success and Redirect to Login Activity
-//                users.add(getEmail);
             login(getEmail, getPassword);
             // Reset All Data on Input Fields
             editName.setText("");
