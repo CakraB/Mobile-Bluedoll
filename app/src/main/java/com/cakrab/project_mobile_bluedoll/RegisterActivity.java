@@ -12,6 +12,8 @@ import android.widget.Toast;
 
 import androidx.appcompat.app.AppCompatActivity;
 
+import com.cakrab.project_mobile_bluedoll.Database.UserHelper;
+
 import java.util.Random;
 
 public class RegisterActivity extends AppCompatActivity {
@@ -21,7 +23,8 @@ public class RegisterActivity extends AppCompatActivity {
     CheckBox checkTerms;
     Button buttonRegister;
     TextView textLoginHere;
-//    EditText editBirthday = findViewById(R.id.edit_birthday);
+    //    EditText editBirthday = findViewById(R.id.edit_birthday);
+    UserHelper dbUser;
 
     @Override
     protected void onCreate(Bundle savedInstanceState) {
@@ -41,6 +44,7 @@ public class RegisterActivity extends AppCompatActivity {
         buttonRegister = findViewById(R.id.button_register);
         textLoginHere = findViewById(R.id.text_login_here);
 //        EditText editBirthday = findViewById(R.id.edit_birthday);
+        dbUser = new UserHelper(getApplicationContext());
     }
 
     private void setAction() {
@@ -107,13 +111,23 @@ public class RegisterActivity extends AppCompatActivity {
             }
 
             RadioButton radioButton = findViewById(selectedGender);
+            String getGender = Integer.toString(selectedGender);
+
             // Validate Terms & Condition Checkbox
             if (!checkTerms.isChecked()) {
                 Toast.makeText(RegisterActivity.this, "User must agreed on the terms and conditions", Toast.LENGTH_SHORT).show();
                 return;
             }
-            // Validate Success and Redirect to Login Activity
-            login(getEmail, getPassword);
+            // Insert New User to User Table
+            if (dbUser.createUser(getName, getEmail, getPassword, getGender)) {
+                Toast.makeText(RegisterActivity.this, "User Register Success", Toast.LENGTH_SHORT).show();
+                Intent register = new Intent(RegisterActivity.this, LoginActivity.class);
+                startActivity(register);
+            } else {
+                Toast.makeText(RegisterActivity.this, "User Register Failed", Toast.LENGTH_SHORT).show();
+            }
+//            // Validate Success and Redirect to Login Activity
+//            login(getEmail, getPassword);
             // Reset All Data on Input Fields
             editName.setText("");
             editEmail.setText("");

@@ -1,20 +1,22 @@
 package com.cakrab.project_mobile_bluedoll;
 
-import androidx.appcompat.app.AppCompatActivity;
-
 import android.content.Intent;
 import android.os.Bundle;
-import android.view.View;
 import android.widget.Button;
 import android.widget.EditText;
 import android.widget.TextView;
 import android.widget.Toast;
+
+import androidx.appcompat.app.AppCompatActivity;
+
+import com.cakrab.project_mobile_bluedoll.Database.UserHelper;
 
 public class LoginActivity extends AppCompatActivity {
 
     EditText editEmail, editPassword;
     Button buttonLogin;
     TextView textRegisterHere;
+    UserHelper dbUser;
 
     @Override
     protected void onCreate(Bundle savedInstanceState) {
@@ -29,6 +31,7 @@ public class LoginActivity extends AppCompatActivity {
         editPassword = findViewById(R.id.edit_password);
         buttonLogin = findViewById(R.id.button_login);
         textRegisterHere = findViewById(R.id.text_register_here);
+        dbUser = new UserHelper(getApplicationContext());
     }
 
     private void setAction() {
@@ -56,9 +59,17 @@ public class LoginActivity extends AppCompatActivity {
                 e.printStackTrace();
                 Toast.makeText(LoginActivity.this, "Error Found!, Please Try Again", Toast.LENGTH_SHORT).show();
             }
-            // Validate Success and Redirect to Home
-            Intent i = new Intent(LoginActivity.this, MainActivity.class);
-            startActivity(i);
+            // Check user credential
+            if (dbUser.readUser(getEmail, getPassword)) {
+                Intent login = new Intent(LoginActivity.this, MainActivity.class);
+                startActivity(login);
+                finish();
+            } else {
+                Toast.makeText(LoginActivity.this, "User is not Exist", Toast.LENGTH_SHORT).show();
+            }
+//            // Validate Success and Redirect to Home
+//            Intent i = new Intent(LoginActivity.this, MainActivity.class);
+//            startActivity(i);
             // Reset All Data on Input Fields
             editEmail.setText("");
             editPassword.setText("");
