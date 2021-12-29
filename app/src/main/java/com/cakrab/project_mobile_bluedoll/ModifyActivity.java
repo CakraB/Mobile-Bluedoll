@@ -11,22 +11,35 @@ import android.widget.Toast;
 
 import androidx.appcompat.app.AppCompatActivity;
 
-import java.util.ArrayList;
+import com.cakrab.project_mobile_bluedoll.Database.DollHelper;
 
 public class ModifyActivity extends AppCompatActivity {
+
+    Spinner spinDollImage;
+    EditText editDollName, editDollDesc;
+    Button buttonSave, buttonCancel;
+    DollHelper dbDoll;
 
     @Override
     protected void onCreate(Bundle savedInstanceState) {
         super.onCreate(savedInstanceState);
         setContentView(R.layout.activity_modify);
         // Init Component
-        Spinner spinDollImage = findViewById(R.id.spinner_doll_image);
-        EditText editDollName = findViewById(R.id.edit_doll_name);
-        EditText editDollDesc = findViewById(R.id.edit_doll_desc);
-        Button buttonSave = findViewById(R.id.button_save);
-        Button buttonCancel = findViewById(R.id.button_cancel);
-        // Init Array List & Adapter
-        ArrayList<Doll> dolls = new ArrayList<Doll>();
+        init();
+        // Do Action
+        setAction();
+    }
+
+    public void init() {
+        spinDollImage = findViewById(R.id.spinner_doll_image);
+        editDollName = findViewById(R.id.edit_doll_name);
+        editDollDesc = findViewById(R.id.edit_doll_desc);
+        buttonSave = findViewById(R.id.button_save);
+        buttonCancel = findViewById(R.id.button_cancel);
+        dbDoll = new DollHelper(getApplicationContext());
+    }
+
+    public void setAction() {
         // Get Intent Data from Home Activity
         Intent getData = getIntent();
         int mDollId = getData.getIntExtra("DOLL ID", 1);
@@ -81,6 +94,7 @@ public class ModifyActivity extends AppCompatActivity {
                     e.printStackTrace();
                     Toast.makeText(ModifyActivity.this, "Error Found!, Please Try Again", Toast.LENGTH_SHORT).show();
                 }
+
                 // Move to Home Activity with passing data
                 Intent i = new Intent(ModifyActivity.this, MainActivity.class);
                 i.putExtra("DOLL ID", mDollId);

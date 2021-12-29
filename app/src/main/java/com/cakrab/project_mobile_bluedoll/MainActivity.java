@@ -13,6 +13,7 @@ import androidx.appcompat.app.AppCompatActivity;
 import androidx.appcompat.widget.Toolbar;
 import androidx.drawerlayout.widget.DrawerLayout;
 
+import com.cakrab.project_mobile_bluedoll.Database.DollHelper;
 import com.google.android.material.navigation.NavigationView;
 
 public class MainActivity extends AppCompatActivity {
@@ -21,6 +22,7 @@ public class MainActivity extends AppCompatActivity {
     ActionBarDrawerToggle drawerToggle;
     Toolbar toolbarMenu;
     NavigationView navigationDrawer;
+    DollHelper dbDoll;
 
     @Override
     protected void onCreate(Bundle savedInstanceState) {
@@ -28,6 +30,7 @@ public class MainActivity extends AppCompatActivity {
         setContentView(R.layout.activity_main);
         init();
         setDrawerToggle();
+        showData();
     }
 
     public void init() {
@@ -48,6 +51,8 @@ public class MainActivity extends AppCompatActivity {
         drawerToggle.syncState();
         // Init Navigation
         navigationDrawer = findViewById(R.id.navigation_drawer);
+        // Database
+        dbDoll = new DollHelper(getApplicationContext());
     }
 
     public void setDrawerToggle() {
@@ -75,6 +80,10 @@ public class MainActivity extends AppCompatActivity {
             }
         });
 
+    }
+
+    public void showData() {
+//        dbDoll.readDoll();
     }
 
     // Set Menu Layout Kebab Menu

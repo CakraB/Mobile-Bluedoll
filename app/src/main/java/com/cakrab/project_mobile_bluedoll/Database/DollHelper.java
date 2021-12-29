@@ -2,6 +2,7 @@ package com.cakrab.project_mobile_bluedoll.Database;
 
 import android.content.ContentValues;
 import android.content.Context;
+import android.database.Cursor;
 import android.database.sqlite.SQLiteDatabase;
 
 public class DollHelper {
@@ -25,6 +26,45 @@ public class DollHelper {
             return false;
         }
         return true;
+    }
+
+    public boolean readDoll() {
+        sqLiteDatabase = databaseHelper.getReadableDatabase();
+        String sql = "SELECT * FROM " + databaseHelper.TABLE_DOLL;
+        Cursor cursor = sqLiteDatabase.rawQuery(sql, new String[]{});
+        cursor.moveToLast();
+        if (cursor.getCount() > 0) {
+            return true;
+        }
+        return false;
+    }
+
+    public boolean updateDoll(String id, String name, String creator, String description, String image) {
+        sqLiteDatabase = databaseHelper.getWritableDatabase();
+        ContentValues contentValues = new ContentValues();
+        contentValues.put("id", id);
+        contentValues.put("name", name);
+        contentValues.put("creator", creator);
+        contentValues.put("description", description);
+        contentValues.put("image", image);
+        long queryResult = sqLiteDatabase.update(databaseHelper.TABLE_DOLL, contentValues, "id = ?", new String[]{id});
+        // If Something Wrong return false
+        if (queryResult > 0) {
+            return true;
+        } else {
+            return false;
+        }
+    }
+
+    public boolean deleteDoll(String id) {
+        sqLiteDatabase = databaseHelper.getWritableDatabase();
+        long queryResult = sqLiteDatabase.delete(databaseHelper.TABLE_DOLL, "id = ?", new String[]{id});
+        // If Something Wrong return false
+        if (queryResult > 0) {
+            return true;
+        } else {
+            return false;
+        }
     }
 
     public void close() {
