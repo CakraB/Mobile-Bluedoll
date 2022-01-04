@@ -19,7 +19,7 @@ public class UserHelper {
         contentValues.put("name", name);
         contentValues.put("email", email);
         contentValues.put("password", password);
-        contentValues.put("gender", password);
+        contentValues.put("gender", gender);
         long queryResult = sqLiteDatabase.insert(databaseHelper.TABLE_USER, null, contentValues);
         // If Something Wrong return false
         if (queryResult == -1) {

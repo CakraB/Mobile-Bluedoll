@@ -97,39 +97,16 @@ public class ModifyActivity extends AppCompatActivity {
                 }
 
                 if (dollId == null) {
-                    dbDoll.createDoll(getDollName,"Creator",getDollDesc, "Doll Image");
+                    dbDoll.createDoll(getDollName,"Create by " + "User",getDollDesc, "Doll Image");
                     Toast.makeText(ModifyActivity.this, "Create Doll Success", Toast.LENGTH_SHORT).show();
                     Intent createDoll = new Intent(ModifyActivity.this, MainActivity.class);
                     startActivity(createDoll);
                 } else {
-                    dbDoll.updateDoll(dollId, getDollName, "Editor", getDollDesc, "Doll Image");
+                    dbDoll.updateDoll(dollId, getDollName, "Edited by " + "User", getDollDesc, "Doll Image");
                     Toast.makeText(ModifyActivity.this, "Update Doll Success", Toast.LENGTH_SHORT).show();
                     Intent updateDoll = new Intent(ModifyActivity.this, MainActivity.class);
                     startActivity(updateDoll);
                 }
-
-//                // Insert New Doll to User Table
-//                if (getDollName.isEmpty() && getDollDesc.isEmpty()) {
-//                    // Harus Cek Availibilty data yg ada di db, kalo dh
-//                    dbDoll.createDoll(getDollName,"Creator",getDollDesc, "Doll Image");
-//                    Toast.makeText(ModifyActivity.this, "Create Doll Success", Toast.LENGTH_SHORT).show();
-//                    Intent createDoll = new Intent(ModifyActivity.this, MainActivity.class);
-//                    startActivity(createDoll);
-//                } else if (!getDollName.isEmpty() && !getDollDesc.isEmpty()) {
-//                    dbDoll.updateDoll(String.valueOf(dollId), getDollName, "Creator", getDollDesc, "Doll Image");
-//                    Toast.makeText(ModifyActivity.this, "Update Doll Success", Toast.LENGTH_SHORT).show();
-//                    Intent updateDoll = new Intent(ModifyActivity.this, MainActivity.class);
-//                    startActivity(updateDoll);
-//                }
-
-                // Move to Home Activity with passing data
-//                Intent i = new Intent(ModifyActivity.this, MainActivity.class);
-//                i.putExtra("DOLL ID", mDollId);
-//                i.putExtra("DOLL IMAGE", getDollImage);
-//                i.putExtra("DOLL NAME", getDollName);
-//                i.putExtra("DOLL CREATOR", "Admin");
-//                i.putExtra("DOLL DESC", getDollDesc);
-//                startActivity(i);
             }
         });
         // Button Action Cancel and Back to Home Activity
