@@ -5,6 +5,8 @@ import android.os.Bundle;
 import android.view.Menu;
 import android.view.MenuInflater;
 import android.view.MenuItem;
+import android.widget.Adapter;
+import android.widget.ListView;
 import android.widget.Toast;
 
 import androidx.annotation.NonNull;
@@ -15,6 +17,8 @@ import androidx.drawerlayout.widget.DrawerLayout;
 
 import com.cakrab.project_mobile_bluedoll.Database.DollHelper;
 import com.google.android.material.navigation.NavigationView;
+
+import java.util.ArrayList;
 
 public class MainActivity extends AppCompatActivity {
 
@@ -83,7 +87,11 @@ public class MainActivity extends AppCompatActivity {
     }
 
     public void showData() {
-//        dbDoll.readDoll();
+        ListView myListview = findViewById(R.id.list_all_dolls);
+        ArrayList<Doll> dollArrayList = dbDoll.readDoll();
+        DollAdapter dollAdapter = new DollAdapter(this, getLayoutInflater(), dollArrayList);
+        myListview.setAdapter(dollAdapter);
+        dollAdapter.notifyDataSetChanged();
     }
 
     // Set Menu Layout Kebab Menu

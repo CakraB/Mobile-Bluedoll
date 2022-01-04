@@ -42,15 +42,15 @@ public class ModifyActivity extends AppCompatActivity {
     public void setAction() {
         // Get Intent Data from Home Activity
         Intent getData = getIntent();
-        int mDollId = getData.getIntExtra("DOLL ID", 1);
-        String mDollImage = getData.getStringExtra("DOLL IMAGE");
-        String mDollName = getData.getStringExtra("DOLL NAME");
-        String mDollCreator = getData.getStringExtra("DOLL CREATOR");
-        String mDollDesc = getData.getStringExtra("DOLL DESC");
+        int dollId = getData.getIntExtra("DOLL ID", 1);
+        String dollImage = getData.getStringExtra("DOLL IMAGE");
+        String dollName = getData.getStringExtra("DOLL NAME");
+        String dollCreator = getData.getStringExtra("DOLL CREATOR");
+        String dollDesc = getData.getStringExtra("DOLL DESC");
         // Validate intent data
-        if (mDollName != null || mDollDesc != null) {
-            editDollName.setText(mDollName);
-            editDollDesc.setText(mDollDesc);
+        if (dollName != null || dollDesc != null) {
+            editDollName.setText(dollName);
+            editDollDesc.setText(dollDesc);
         } else {
             editDollName.setText("");
             editDollDesc.setText("");
@@ -61,19 +61,19 @@ public class ModifyActivity extends AppCompatActivity {
             public void onClick(View view) {
                 String getDollName = editDollName.getText().toString();
                 String getDollDesc = editDollDesc.getText().toString();
-                String getDollImage = spinDollImage.getSelectedItem().toString();
+//                String getDollImage = spinDollImage.getSelectedItem().toString();
                 // Validate Spinner Value
-                spinDollImage.setOnItemSelectedListener(new AdapterView.OnItemSelectedListener() {
-                    @Override
-                    public void onItemSelected(AdapterView<?> adapterView, View view, int i, long l) {
-                        Toast.makeText(ModifyActivity.this, getDollImage + " Selected", Toast.LENGTH_SHORT).show();
-                    }
-
-                    @Override
-                    public void onNothingSelected(AdapterView<?> adapterView) {
-                        Toast.makeText(ModifyActivity.this, "Image must be chosen", Toast.LENGTH_SHORT).show();
-                    }
-                });
+//                spinDollImage.setOnItemSelectedListener(new AdapterView.OnItemSelectedListener() {
+//                    @Override
+//                    public void onItemSelected(AdapterView<?> adapterView, View view, int i, long l) {
+//                        Toast.makeText(ModifyActivity.this, getDollImage + " Selected", Toast.LENGTH_SHORT).show();
+//                    }
+//
+//                    @Override
+//                    public void onNothingSelected(AdapterView<?> adapterView) {
+//                        Toast.makeText(ModifyActivity.this, "Image must be chosen", Toast.LENGTH_SHORT).show();
+//                    }
+//                });
                 // Validate Name Input
                 try {
                     if (getDollName.isEmpty()) {
@@ -95,14 +95,28 @@ public class ModifyActivity extends AppCompatActivity {
                     Toast.makeText(ModifyActivity.this, "Error Found!, Please Try Again", Toast.LENGTH_SHORT).show();
                 }
 
+                // Insert New Doll to User Table
+                if (getDollName.isEmpty() && getDollDesc.isEmpty()) {
+                    // Harus Cek Availibilty data yg ada di db, kalo dh
+                    dbDoll.createDoll(getDollName,"Creator",getDollDesc, "Doll Image");
+                    Toast.makeText(ModifyActivity.this, "Create Doll Success", Toast.LENGTH_SHORT).show();
+                    Intent createDoll = new Intent(ModifyActivity.this, MainActivity.class);
+                    startActivity(createDoll);
+                } else if (!getDollName.isEmpty() && !getDollDesc.isEmpty()) {
+                    dbDoll.updateDoll(String.valueOf(dollId), getDollName, "Creator", getDollDesc, "Doll Image");
+                    Toast.makeText(ModifyActivity.this, "Update Doll Success", Toast.LENGTH_SHORT).show();
+                    Intent updateDoll = new Intent(ModifyActivity.this, MainActivity.class);
+                    startActivity(updateDoll);
+                }
+
                 // Move to Home Activity with passing data
-                Intent i = new Intent(ModifyActivity.this, MainActivity.class);
-                i.putExtra("DOLL ID", mDollId);
-                i.putExtra("DOLL IMAGE", getDollImage);
-                i.putExtra("DOLL NAME", getDollName);
-                i.putExtra("DOLL CREATOR", "Admin");
-                i.putExtra("DOLL DESC", getDollDesc);
-                startActivity(i);
+//                Intent i = new Intent(ModifyActivity.this, MainActivity.class);
+//                i.putExtra("DOLL ID", mDollId);
+//                i.putExtra("DOLL IMAGE", getDollImage);
+//                i.putExtra("DOLL NAME", getDollName);
+//                i.putExtra("DOLL CREATOR", "Admin");
+//                i.putExtra("DOLL DESC", getDollDesc);
+//                startActivity(i);
             }
         });
         // Button Action Cancel and Back to Home Activity

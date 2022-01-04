@@ -11,6 +11,8 @@ import android.widget.ImageView;
 import android.widget.TextView;
 import android.widget.Toast;
 
+import com.cakrab.project_mobile_bluedoll.Database.DollHelper;
+
 import java.util.ArrayList;
 
 public class DollAdapter extends BaseAdapter {
@@ -19,6 +21,7 @@ public class DollAdapter extends BaseAdapter {
     ArrayList<Doll> dolls;
     Context context;
     LayoutInflater inflater;
+    DollHelper dbDoll;
 
     // Constructor Doll Adapter
     DollAdapter(Context context, LayoutInflater inflater, ArrayList<Doll> dolls) {
@@ -84,6 +87,7 @@ public class DollAdapter extends BaseAdapter {
             Button itemView = convertView.findViewById(R.id.button_item_view);
             Button itemEdit = convertView.findViewById(R.id.button_item_edit);
             Button itemDelete = convertView.findViewById(R.id.button_item_delete);
+            dbDoll = new DollHelper(context.getApplicationContext());
             // Set Value
             dollImage.setImageResource(R.drawable.ic_launcher_background);
             dollName.setText(thisDoll.getDollName());
@@ -120,8 +124,7 @@ public class DollAdapter extends BaseAdapter {
             itemDelete.setOnClickListener(new View.OnClickListener() {
                 @Override
                 public void onClick(View view) {
-                    deleteItem(thisDoll);
-                    notifyDataSetChanged();
+                    dbDoll.deleteDoll(String.valueOf(position));
                     Toast.makeText(context, thisDoll.getDollName() + " Delete Successfully", Toast.LENGTH_SHORT).show();
                 }
             });
