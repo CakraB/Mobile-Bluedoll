@@ -62,6 +62,7 @@ public class LoginActivity extends AppCompatActivity {
             // Check user credential
             if (dbUser.readUser(getEmail, getPassword)) {
                 Intent login = new Intent(LoginActivity.this, MainActivity.class);
+                login.putExtra("USER EMAIL", getEmail);
                 startActivity(login);
                 finish();
             } else {

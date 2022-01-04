@@ -2,6 +2,7 @@ package com.cakrab.project_mobile_bluedoll;
 
 import android.content.Intent;
 import android.os.Bundle;
+import android.util.Log;
 import android.view.View;
 import android.widget.AdapterView;
 import android.widget.Button;
@@ -42,13 +43,13 @@ public class ModifyActivity extends AppCompatActivity {
     public void setAction() {
         // Get Intent Data from Home Activity
         Intent getData = getIntent();
-        int dollId = getData.getIntExtra("DOLL ID", 1);
+        String dollId = getData.getStringExtra("DOLL ID");
         String dollImage = getData.getStringExtra("DOLL IMAGE");
         String dollName = getData.getStringExtra("DOLL NAME");
         String dollCreator = getData.getStringExtra("DOLL CREATOR");
         String dollDesc = getData.getStringExtra("DOLL DESC");
         // Validate intent data
-        if (dollName != null || dollDesc != null) {
+        if (dollId != null || dollName != null || dollDesc != null) {
             editDollName.setText(dollName);
             editDollDesc.setText(dollDesc);
         } else {
@@ -95,19 +96,31 @@ public class ModifyActivity extends AppCompatActivity {
                     Toast.makeText(ModifyActivity.this, "Error Found!, Please Try Again", Toast.LENGTH_SHORT).show();
                 }
 
-                // Insert New Doll to User Table
-                if (getDollName.isEmpty() && getDollDesc.isEmpty()) {
-                    // Harus Cek Availibilty data yg ada di db, kalo dh
+                if (dollId == null) {
                     dbDoll.createDoll(getDollName,"Creator",getDollDesc, "Doll Image");
                     Toast.makeText(ModifyActivity.this, "Create Doll Success", Toast.LENGTH_SHORT).show();
                     Intent createDoll = new Intent(ModifyActivity.this, MainActivity.class);
                     startActivity(createDoll);
-                } else if (!getDollName.isEmpty() && !getDollDesc.isEmpty()) {
-                    dbDoll.updateDoll(String.valueOf(dollId), getDollName, "Creator", getDollDesc, "Doll Image");
+                } else {
+                    dbDoll.updateDoll(dollId, getDollName, "Editor", getDollDesc, "Doll Image");
                     Toast.makeText(ModifyActivity.this, "Update Doll Success", Toast.LENGTH_SHORT).show();
                     Intent updateDoll = new Intent(ModifyActivity.this, MainActivity.class);
                     startActivity(updateDoll);
                 }
+
+//                // Insert New Doll to User Table
+//                if (getDollName.isEmpty() && getDollDesc.isEmpty()) {
+//                    // Harus Cek Availibilty data yg ada di db, kalo dh
+//                    dbDoll.createDoll(getDollName,"Creator",getDollDesc, "Doll Image");
+//                    Toast.makeText(ModifyActivity.this, "Create Doll Success", Toast.LENGTH_SHORT).show();
+//                    Intent createDoll = new Intent(ModifyActivity.this, MainActivity.class);
+//                    startActivity(createDoll);
+//                } else if (!getDollName.isEmpty() && !getDollDesc.isEmpty()) {
+//                    dbDoll.updateDoll(String.valueOf(dollId), getDollName, "Creator", getDollDesc, "Doll Image");
+//                    Toast.makeText(ModifyActivity.this, "Update Doll Success", Toast.LENGTH_SHORT).show();
+//                    Intent updateDoll = new Intent(ModifyActivity.this, MainActivity.class);
+//                    startActivity(updateDoll);
+//                }
 
                 // Move to Home Activity with passing data
 //                Intent i = new Intent(ModifyActivity.this, MainActivity.class);

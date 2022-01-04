@@ -88,7 +88,7 @@ public class MainActivity extends AppCompatActivity {
 
     public void showData() {
         ListView myListview = findViewById(R.id.list_all_dolls);
-        ArrayList<Doll> dollArrayList = dbDoll.readDoll();
+        ArrayList<Doll> dollArrayList = dbDoll.getAllDoll();
         DollAdapter dollAdapter = new DollAdapter(this, getLayoutInflater(), dollArrayList);
         myListview.setAdapter(dollAdapter);
         dollAdapter.notifyDataSetChanged();

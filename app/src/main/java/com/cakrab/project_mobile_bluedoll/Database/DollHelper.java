@@ -34,7 +34,7 @@ public class DollHelper {
         return true;
     }
 
-    public ArrayList<Doll> readDoll() {
+    public ArrayList<Doll> getAllDoll() {
         ArrayList<Doll> dollArrayList = new ArrayList<>();
         sqLiteDatabase = databaseHelper.getReadableDatabase();
 

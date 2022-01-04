@@ -2,6 +2,7 @@ package com.cakrab.project_mobile_bluedoll;
 
 import android.content.Context;
 import android.content.Intent;
+import android.util.Log;
 import android.view.LayoutInflater;
 import android.view.View;
 import android.view.ViewGroup;
@@ -48,17 +49,17 @@ public class DollAdapter extends BaseAdapter {
         return position;
     }
 
-    // Add Doll Method
-    public void addItem(Doll doll) {
-        dolls.add(doll);
-        notifyDataSetChanged();
-    }
-
-    // Update Doll Method
-    public void setItem(int position, Doll doll) {
-        dolls.set(position, doll);
-        notifyDataSetChanged();
-    }
+//    // Add Doll Method
+//    public void addItem(Doll doll) {
+//        dolls.add(doll);
+//        notifyDataSetChanged();
+//    }
+//
+//    // Update Doll Method
+//    public void setItem(int position, Doll doll) {
+//        dolls.set(position, doll);
+//        notifyDataSetChanged();
+//    }
 
     // Delete Doll Method
     public void deleteItem(Doll position) {
@@ -110,8 +111,9 @@ public class DollAdapter extends BaseAdapter {
             itemEdit.setOnClickListener(new View.OnClickListener() {
                 @Override
                 public void onClick(View view) {
+                    Log.i("Tampilin ID yang ke Get", thisDoll.getDollId());
                     Intent i = new Intent(context, ModifyActivity.class);
-                    i.putExtra("DOLL ID", getItemId(position));
+                    i.putExtra("DOLL ID", thisDoll.getDollId());
                     i.putExtra("DOLL IMAGE", thisDoll.getDollImage());
                     i.putExtra("DOLL NAME", thisDoll.getDollName());
                     i.putExtra("DOLL CREATOR", thisDoll.getDollCreator());
@@ -124,7 +126,9 @@ public class DollAdapter extends BaseAdapter {
             itemDelete.setOnClickListener(new View.OnClickListener() {
                 @Override
                 public void onClick(View view) {
-                    dbDoll.deleteDoll(String.valueOf(position));
+                    String getId = thisDoll.getDollId();
+                    dbDoll.deleteDoll(getId);
+                    deleteItem(thisDoll);
                     Toast.makeText(context, thisDoll.getDollName() + " Delete Successfully", Toast.LENGTH_SHORT).show();
                 }
             });
