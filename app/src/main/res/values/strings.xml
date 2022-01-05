@@ -38,6 +38,13 @@
     <!-- Drawer -->
     <string name="creator_group">Kelompok 2</string>
     <string name="creator_member">Cakra, Alvin, Eurico</string>
+    <!--  Modify Spinner Array String  -->
+    <string-array name="list_doll_image">
+        <item>Blue Doll</item>
+        <item>Red Doll</item>
+        <item>Brown Doll</item>
+        <item>White Doll</item>
+    </string-array>
     <string name="open_menu" />
     <string name="close_menu" />
 </resources>

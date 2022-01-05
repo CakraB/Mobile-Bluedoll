@@ -15,6 +15,8 @@ import android.widget.Toast;
 import com.cakrab.project_mobile_bluedoll.Database.DollHelper;
 
 import java.util.ArrayList;
+import java.util.HashMap;
+import java.util.Map;
 
 public class DollAdapter extends BaseAdapter {
 
@@ -89,8 +91,14 @@ public class DollAdapter extends BaseAdapter {
             Button itemEdit = convertView.findViewById(R.id.button_item_edit);
             Button itemDelete = convertView.findViewById(R.id.button_item_delete);
             dbDoll = new DollHelper(context.getApplicationContext());
+            // Mapping Image by String Image from database
+            Map<String, Integer> setImageView = new HashMap<String, Integer>();
+            setImageView.put("Blue Doll",R.drawable.ic_user);
+            setImageView.put("Red Doll",R.drawable.ic_email);
+            setImageView.put("Brown Doll",R.drawable.ic_password);
+            setImageView.put("White Doll",R.drawable.ic_text);
             // Set Value
-            dollImage.setImageResource(R.drawable.ic_launcher_background);
+            dollImage.setImageResource(setImageView.get(thisDoll.getDollImage()));
             dollName.setText(thisDoll.getDollName());
             dollCreator.setText(thisDoll.getDollCreator());
             dollDescription.setText(thisDoll.getDollDescription());

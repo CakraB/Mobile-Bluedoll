@@ -9,6 +9,9 @@ import android.widget.TextView;
 
 import androidx.appcompat.app.AppCompatActivity;
 
+import java.util.HashMap;
+import java.util.Map;
+
 public class DetailActivity extends AppCompatActivity {
 
     @Override
@@ -25,8 +28,14 @@ public class DetailActivity extends AppCompatActivity {
         String dollDetailImage = getData.getStringExtra("DOLL IMAGE");
         String dollDetailName = getData.getStringExtra("DOLL NAME");
         String dollDetailDescription = getData.getStringExtra("DOLL DESC");
+        // Mapping Image by String Image from database
+        Map<String, Integer> setImageView = new HashMap<String, Integer>();
+        setImageView.put("Blue Doll",R.drawable.ic_user);
+        setImageView.put("Red Doll",R.drawable.ic_email);
+        setImageView.put("Brown Doll",R.drawable.ic_password);
+        setImageView.put("White Doll",R.drawable.ic_text);
         // Set Data that get from Home Activity
-        detailImage.setImageResource(R.drawable.ic_launcher_background);
+        detailImage.setImageResource(setImageView.get(dollDetailImage));
         textDetailName.setText(dollDetailName);
         textDetailDescription.setText(dollDetailDescription);
         // Button Back Action
