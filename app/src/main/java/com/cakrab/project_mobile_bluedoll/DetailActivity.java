@@ -19,6 +19,7 @@ public class DetailActivity extends AppCompatActivity {
         super.onCreate(savedInstanceState);
         setContentView(R.layout.activity_detail);
         // Init Component
+        Button detailShare = findViewById(R.id.button_detail_share);
         Button detailBack = findViewById(R.id.button_detail_back);
         ImageView detailImage = findViewById(R.id.image_detail);
         TextView textDetailName = findViewById(R.id.text_detail_name);
@@ -38,6 +39,17 @@ public class DetailActivity extends AppCompatActivity {
         detailImage.setImageResource(setImageView.get(dollDetailImage));
         textDetailName.setText(dollDetailName);
         textDetailDescription.setText(dollDetailDescription);
+        // Button Share Action
+        detailShare.setOnClickListener(new View.OnClickListener() {
+            @Override
+            public void onClick(View view) {
+                Intent intentShare = new Intent();
+                intentShare.setAction(Intent.ACTION_SEND);
+                intentShare.putExtra(Intent.EXTRA_TEXT, "Hey, check this doll from BlueDoll! It’s the " + dollDetailName + " and it’s so awesome!" + " - User");
+                intentShare.setType("text/plain");
+                startActivity(intentShare);
+            }
+        });
         // Button Back Action
         detailBack.setOnClickListener(new View.OnClickListener() {
             @Override

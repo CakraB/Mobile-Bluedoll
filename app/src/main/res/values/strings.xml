@@ -47,4 +47,6 @@
     </string-array>
     <string name="open_menu" />
     <string name="close_menu" />
+    <string name="detail_share">Share Doll</string>
+    <string name="detail_back">Back to Main Menu</string>
 </resources>
