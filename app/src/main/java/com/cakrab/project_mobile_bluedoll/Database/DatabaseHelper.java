@@ -41,6 +41,13 @@ public class DatabaseHelper extends SQLiteOpenHelper {
                 USER_PASSWORD + " TEXT, " +
                 USER_GENDER + " TEXT " + ")");
 
+        sqLiteDatabase.execSQL("INSERT INTO " + TABLE_USER + "(" +
+                USER_ID + ", " +
+                USER_NAME + ", " +
+                USER_EMAIL + " , " +
+                USER_PASSWORD + " , " +
+                USER_GENDER  + ") VALUES(1, 'Administrator', 'admin@gmail.com', 'admin123', 'Male')");
+
         sqLiteDatabase.execSQL("CREATE TABLE " + TABLE_DOLL + "(" +
                 DOLL_ID + " INTEGER PRIMARY KEY AUTOINCREMENT, " +
                 DOLL_NAME + " TEXT, " +

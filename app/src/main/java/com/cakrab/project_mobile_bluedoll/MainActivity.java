@@ -5,7 +5,6 @@ import android.os.Bundle;
 import android.view.Menu;
 import android.view.MenuInflater;
 import android.view.MenuItem;
-import android.widget.Adapter;
 import android.widget.ListView;
 import android.widget.Toast;
 
@@ -60,28 +59,25 @@ public class MainActivity extends AppCompatActivity {
     }
 
     public void setDrawerToggle() {
-        navigationDrawer.setNavigationItemSelectedListener(new NavigationView.OnNavigationItemSelectedListener() {
-            @Override
-            public boolean onNavigationItemSelected(@NonNull MenuItem item) {
-                int itemId = item.getItemId();
-                // Move to Home Activity
-                if (itemId == R.id.option_view_all_dolls) {
-                    Intent i = new Intent(getApplicationContext(), MainActivity.class);
-                    startActivity(i);
-                }
-                // Move to Modify Activity
-                if (itemId == R.id.option_create) {
-                    Intent o = new Intent(getApplicationContext(), ModifyActivity.class);
-                    startActivity(o);
-                }
-                // Move to Login Activity
-                if (itemId == R.id.option_logout) {
-                    Intent u = new Intent(MainActivity.this, LoginActivity.class);
-                    Toast.makeText(MainActivity.this, "You Sign out Successfully", Toast.LENGTH_SHORT).show();
-                    startActivity(u);
-                }
-                return true;
+        navigationDrawer.setNavigationItemSelectedListener(item -> {
+            int itemId = item.getItemId();
+            // Move to Home Activity
+            if (itemId == R.id.option_view_all_dolls) {
+                Intent i = new Intent(getApplicationContext(), MainActivity.class);
+                startActivity(i);
             }
+            // Move to Modify Activity
+            if (itemId == R.id.option_create) {
+                Intent o = new Intent(getApplicationContext(), ModifyActivity.class);
+                startActivity(o);
+            }
+            // Move to Login Activity
+            if (itemId == R.id.option_logout) {
+                Intent u = new Intent(MainActivity.this, LoginActivity.class);
+                Toast.makeText(MainActivity.this, "You Sign out Successfully", Toast.LENGTH_SHORT).show();
+                startActivity(u);
+            }
+            return true;
         });
 
     }

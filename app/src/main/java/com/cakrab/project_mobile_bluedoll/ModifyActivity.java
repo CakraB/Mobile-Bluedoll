@@ -1,9 +1,7 @@
 package com.cakrab.project_mobile_bluedoll;
 
 import android.content.Intent;
-import android.content.res.TypedArray;
 import android.os.Bundle;
-import android.util.Log;
 import android.view.View;
 import android.widget.AdapterView;
 import android.widget.Button;
@@ -26,9 +24,7 @@ public class ModifyActivity extends AppCompatActivity {
     protected void onCreate(Bundle savedInstanceState) {
         super.onCreate(savedInstanceState);
         setContentView(R.layout.activity_modify);
-        // Init Component
         init();
-        // Do Action
         setAction();
     }
 
@@ -58,64 +54,58 @@ public class ModifyActivity extends AppCompatActivity {
             editDollDesc.setText("");
         }
         // Button Action Save Data and Redirect to Home Activity
-        buttonSave.setOnClickListener(new View.OnClickListener() {
-            @Override
-            public void onClick(View view) {
-                String getDollName = editDollName.getText().toString();
-                String getDollDesc = editDollDesc.getText().toString();
-                String getDollImage = spinDollImage.getSelectedItem().toString();
+        buttonSave.setOnClickListener(view -> {
+            String getDollName = editDollName.getText().toString();
+            String getDollDesc = editDollDesc.getText().toString();
+            String getDollImage = spinDollImage.getSelectedItem().toString();
 //              Validate Spinner Value
-                spinDollImage.setOnItemSelectedListener(new AdapterView.OnItemSelectedListener() {
-                    @Override
-                    public void onItemSelected(AdapterView<?> adapterView, View view, int i, long l) {
-                        Toast.makeText(ModifyActivity.this, getDollImage + " Selected", Toast.LENGTH_SHORT).show();
-                    }
-                    @Override
-                    public void onNothingSelected(AdapterView<?> adapterView) {
-                        Toast.makeText(ModifyActivity.this, "Image must be chosen", Toast.LENGTH_SHORT).show();
-                    }
-                });
-                // Validate Name Input
-                try {
-                    if (getDollName.isEmpty()) {
-                        Toast.makeText(ModifyActivity.this, "Doll Name must be filled", Toast.LENGTH_SHORT).show();
-                        return;
-                    }
-                } catch (Exception e) {
-                    e.printStackTrace();
-                    Toast.makeText(ModifyActivity.this, "Error Found!, Please Try Again", Toast.LENGTH_SHORT).show();
+            spinDollImage.setOnItemSelectedListener(new AdapterView.OnItemSelectedListener() {
+                @Override
+                public void onItemSelected(AdapterView<?> adapterView, View view, int i, long l) {
+                    Toast.makeText(ModifyActivity.this, getDollImage + " Selected", Toast.LENGTH_SHORT).show();
                 }
-                // Validate Description Input
-                try {
-                    if (getDollDesc.isEmpty()) {
-                        Toast.makeText(ModifyActivity.this, "Doll Description must be filled", Toast.LENGTH_SHORT).show();
-                        return;
-                    }
-                } catch (Exception e) {
-                    e.printStackTrace();
-                    Toast.makeText(ModifyActivity.this, "Error Found!, Please Try Again", Toast.LENGTH_SHORT).show();
+                @Override
+                public void onNothingSelected(AdapterView<?> adapterView) {
+                    Toast.makeText(ModifyActivity.this, "Image must be chosen", Toast.LENGTH_SHORT).show();
                 }
+            });
+            // Validate Name Input
+            try {
+                if (getDollName.isEmpty()) {
+                    Toast.makeText(ModifyActivity.this, "Doll Name must be filled", Toast.LENGTH_SHORT).show();
+                    return;
+                }
+            } catch (Exception e) {
+                e.printStackTrace();
+                Toast.makeText(ModifyActivity.this, "Error Found!, Please Try Again", Toast.LENGTH_SHORT).show();
+            }
+            // Validate Description Input
+            try {
+                if (getDollDesc.isEmpty()) {
+                    Toast.makeText(ModifyActivity.this, "Doll Description must be filled", Toast.LENGTH_SHORT).show();
+                    return;
+                }
+            } catch (Exception e) {
+                e.printStackTrace();
+                Toast.makeText(ModifyActivity.this, "Error Found!, Please Try Again", Toast.LENGTH_SHORT).show();
+            }
 
-                if (dollId == null) {
-                    dbDoll.createDoll(getDollName,"Create by " + "User", getDollDesc, getDollImage);
-                    Toast.makeText(ModifyActivity.this, "Create Doll Success", Toast.LENGTH_SHORT).show();
-                    Intent createDoll = new Intent(ModifyActivity.this, MainActivity.class);
-                    startActivity(createDoll);
-                } else {
-                    dbDoll.updateDoll(dollId, getDollName, "Edited by " + "User", getDollDesc, getDollImage);
-                    Toast.makeText(ModifyActivity.this, "Update Doll Success", Toast.LENGTH_SHORT).show();
-                    Intent updateDoll = new Intent(ModifyActivity.this, MainActivity.class);
-                    startActivity(updateDoll);
-                }
+            if (dollId == null) {
+                dbDoll.createDoll(getDollName,"Create by " + "User", getDollDesc, getDollImage);
+                Toast.makeText(ModifyActivity.this, "Create Doll Success", Toast.LENGTH_SHORT).show();
+                Intent createDoll = new Intent(ModifyActivity.this, MainActivity.class);
+                startActivity(createDoll);
+            } else {
+                dbDoll.updateDoll(dollId, getDollName, "Edited by " + "User", getDollDesc, getDollImage);
+                Toast.makeText(ModifyActivity.this, "Update Doll Success", Toast.LENGTH_SHORT).show();
+                Intent updateDoll = new Intent(ModifyActivity.this, MainActivity.class);
+                startActivity(updateDoll);
             }
         });
         // Button Action Cancel and Back to Home Activity
-        buttonCancel.setOnClickListener(new View.OnClickListener() {
-            @Override
-            public void onClick(View view) {
-                Intent i = new Intent(ModifyActivity.this, MainActivity.class);
-                startActivity(i);
-            }
+        buttonCancel.setOnClickListener(view -> {
+            Intent i = new Intent(ModifyActivity.this, MainActivity.class);
+            startActivity(i);
         });
     }
 }

@@ -109,10 +109,9 @@ public class RegisterActivity extends AppCompatActivity {
                 Toast.makeText(RegisterActivity.this, "Gender must be selected", Toast.LENGTH_SHORT).show();
                 return;
             }
-
+            // Get Radio Value
             RadioButton radioButton = findViewById(selectedGender);
-            String getGender = Integer.toString(selectedGender);
-
+            String getGender = radioButton.getText().toString();
             // Validate Terms & Condition Checkbox
             if (!checkTerms.isChecked()) {
                 Toast.makeText(RegisterActivity.this, "User must agreed on the terms and conditions", Toast.LENGTH_SHORT).show();
