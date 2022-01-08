@@ -2,7 +2,6 @@ package com.cakrab.project_mobile_bluedoll;
 
 import android.content.Intent;
 import android.os.Bundle;
-import android.view.View;
 import android.widget.Button;
 import android.widget.ImageView;
 import android.widget.TextView;
@@ -43,10 +42,9 @@ public class DetailActivity extends AppCompatActivity {
         String dollDetailDescription = getData.getStringExtra("DOLL DESC");
         // Mapping Image by String Image from database
         Map<String, Integer> setImageView = new HashMap<>();
-        setImageView.put("Blue Doll", R.drawable.ic_user);
-        setImageView.put("Red Doll", R.drawable.ic_email);
-        setImageView.put("Brown Doll", R.drawable.ic_password);
-        setImageView.put("White Doll", R.drawable.ic_text);
+        setImageView.put("Brown Doll",R.drawable.img_brown);
+        setImageView.put("Panda Doll",R.drawable.img_panda);
+        setImageView.put("White Doll",R.drawable.img_white);
         // Set Data that get from Home Activity
         detailImage.setImageResource(setImageView.get(dollDetailImage));
         textDetailName.setText(dollDetailName);

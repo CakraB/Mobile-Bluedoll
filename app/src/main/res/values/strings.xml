@@ -37,12 +37,12 @@
     <string name="about_doll_menu">Our Location</string>
     <!-- Drawer -->
     <string name="creator_group">Kelompok 2</string>
-    <string name="creator_member">Cakra, Alvin, Eurico</string>
+    <string name="creator_member">
+        Cakra Buana, Alvin Purnama C, Eurico Valentino</string>
     <!--  Modify Spinner Array String  -->
     <string-array name="list_doll_image">
-        <item>Blue Doll</item>
-        <item>Red Doll</item>
         <item>Brown Doll</item>
+        <item>Panda Doll</item>
         <item>White Doll</item>
     </string-array>
     <string name="open_menu" />

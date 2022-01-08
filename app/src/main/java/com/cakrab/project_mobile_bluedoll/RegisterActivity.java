@@ -139,19 +139,4 @@ public class RegisterActivity extends AppCompatActivity {
             startActivity(i);
         });
     }
-
-    // Move with register data to login page
-    public void login(String getEmail, String getPassword) {
-        Random rand = new Random();
-        int keyOne = rand.nextInt(10);
-        int keyTwo = rand.nextInt(10);
-        int keyThree = rand.nextInt(10);
-        String userId = "US" + keyOne + keyTwo + keyThree;
-
-        Intent i = new Intent(RegisterActivity.this, LoginActivity.class);
-        i.putExtra("USERID", userId);
-        i.putExtra("EMAIL", getEmail);
-        i.putExtra("PASSWORD", getPassword);
-        startActivity(i);
-    }
 }

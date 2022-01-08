@@ -2,7 +2,6 @@ package com.cakrab.project_mobile_bluedoll;
 
 import android.content.Context;
 import android.content.Intent;
-import android.util.Log;
 import android.view.LayoutInflater;
 import android.view.View;
 import android.view.ViewGroup;
@@ -51,18 +50,6 @@ public class DollAdapter extends BaseAdapter {
         return position;
     }
 
-//    // Add Doll Method
-//    public void addItem(Doll doll) {
-//        dolls.add(doll);
-//        notifyDataSetChanged();
-//    }
-//
-//    // Update Doll Method
-//    public void setItem(int position, Doll doll) {
-//        dolls.set(position, doll);
-//        notifyDataSetChanged();
-//    }
-
     // Delete Doll Method
     public void deleteItem(Doll position) {
         dolls.remove(position);
@@ -93,10 +80,9 @@ public class DollAdapter extends BaseAdapter {
             dbDoll = new DollHelper(context.getApplicationContext());
             // Mapping Image by String Image from database
             Map<String, Integer> setImageView = new HashMap<>();
-            setImageView.put("Blue Doll",R.drawable.ic_user);
-            setImageView.put("Red Doll",R.drawable.ic_email);
-            setImageView.put("Brown Doll",R.drawable.ic_password);
-            setImageView.put("White Doll",R.drawable.ic_text);
+            setImageView.put("Brown Doll",R.drawable.img_brown);
+            setImageView.put("Panda Doll",R.drawable.img_panda);
+            setImageView.put("White Doll",R.drawable.img_white);
             // Set Value
             dollImage.setImageResource(setImageView.get(thisDoll.getDollImage()));
             dollName.setText(thisDoll.getDollName());

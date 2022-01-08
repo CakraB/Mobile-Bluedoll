@@ -41,9 +41,7 @@ public class ModifyActivity extends AppCompatActivity {
         // Get Intent Data from Home Activity
         Intent getData = getIntent();
         String dollId = getData.getStringExtra("DOLL ID");
-        String dollImage = getData.getStringExtra("DOLL IMAGE");
         String dollName = getData.getStringExtra("DOLL NAME");
-        String dollCreator = getData.getStringExtra("DOLL CREATOR");
         String dollDesc = getData.getStringExtra("DOLL DESC");
         // Validate intent data
         if (dollId != null || dollName != null || dollDesc != null) {
@@ -58,7 +56,7 @@ public class ModifyActivity extends AppCompatActivity {
             String getDollName = editDollName.getText().toString();
             String getDollDesc = editDollDesc.getText().toString();
             String getDollImage = spinDollImage.getSelectedItem().toString();
-//              Validate Spinner Value
+//          Validate Spinner Value
             spinDollImage.setOnItemSelectedListener(new AdapterView.OnItemSelectedListener() {
                 @Override
                 public void onItemSelected(AdapterView<?> adapterView, View view, int i, long l) {
@@ -91,7 +89,7 @@ public class ModifyActivity extends AppCompatActivity {
             }
 
             if (dollId == null) {
-                dbDoll.createDoll(getDollName,"Create by " + "User", getDollDesc, getDollImage);
+                dbDoll.createDoll(getDollName, "Create by " + "User", getDollDesc, getDollImage);
                 Toast.makeText(ModifyActivity.this, "Create Doll Success", Toast.LENGTH_SHORT).show();
                 Intent createDoll = new Intent(ModifyActivity.this, MainActivity.class);
                 startActivity(createDoll);

@@ -1,7 +1,7 @@
 <?xml version="1.0" encoding="utf-8"?>
 <LinearLayout xmlns:android="http://schemas.android.com/apk/res/android"
     android:layout_width="match_parent"
-    android:layout_height="120dp"
+    android:layout_height="160dp"
     android:background="@color/purple_700"
     android:gravity="bottom"
     android:orientation="vertical"
@@ -12,15 +12,17 @@
         android:id="@+id/text_menu_name"
         android:layout_width="match_parent"
         android:layout_height="wrap_content"
+        android:layout_marginBottom="8dp"
         android:text="@string/creator_group"
         android:textColor="@color/white"
         android:textSize="24sp"
         android:textStyle="bold" />
 
     <TextView
-        android:id="@+id/text_menu_email"
+        android:id="@+id/text_menu_group"
         android:layout_width="match_parent"
         android:layout_height="wrap_content"
+        android:ellipsize="end"
         android:text="@string/creator_member"
         android:textColor="@color/white"
         android:textSize="16sp"
