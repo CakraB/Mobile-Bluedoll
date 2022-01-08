@@ -19,6 +19,7 @@ public class DatabaseHelper extends SQLiteOpenHelper {
     private static final String USER_EMAIL = "email";
     private static final String USER_PASSWORD = "password";
     private static final String USER_GENDER = "gender";
+    private static final String USER_ROLE = "role";
 //    private static final String USER_BIRTHDAY = "birthday";
 
     // Doll Table Column
@@ -39,14 +40,16 @@ public class DatabaseHelper extends SQLiteOpenHelper {
                 USER_NAME + " TEXT, " +
                 USER_EMAIL + " TEXT, " +
                 USER_PASSWORD + " TEXT, " +
-                USER_GENDER + " TEXT " + ")");
+                USER_GENDER + " TEXT, " +
+                USER_ROLE + " TEXT " + ")");
 
         sqLiteDatabase.execSQL("INSERT INTO " + TABLE_USER + "(" +
                 USER_ID + ", " +
                 USER_NAME + ", " +
                 USER_EMAIL + " , " +
                 USER_PASSWORD + " , " +
-                USER_GENDER  + ") VALUES(1, 'Administrator', 'admin@gmail.com', 'admin123', 'Male')");
+                USER_GENDER  + " , " +
+                USER_ROLE + ") VALUES(1, 'Administrator', 'admin@gmail.com', 'admin123', 'Male', 'Admin')");
 
         sqLiteDatabase.execSQL("CREATE TABLE " + TABLE_DOLL + "(" +
                 DOLL_ID + " INTEGER PRIMARY KEY AUTOINCREMENT, " +

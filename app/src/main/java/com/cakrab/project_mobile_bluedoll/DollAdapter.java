@@ -92,7 +92,7 @@ public class DollAdapter extends BaseAdapter {
             Button itemDelete = convertView.findViewById(R.id.button_item_delete);
             dbDoll = new DollHelper(context.getApplicationContext());
             // Mapping Image by String Image from database
-            Map<String, Integer> setImageView = new HashMap<String, Integer>();
+            Map<String, Integer> setImageView = new HashMap<>();
             setImageView.put("Blue Doll",R.drawable.ic_user);
             setImageView.put("Red Doll",R.drawable.ic_email);
             setImageView.put("Brown Doll",R.drawable.ic_password);
@@ -103,42 +103,32 @@ public class DollAdapter extends BaseAdapter {
             dollCreator.setText(thisDoll.getDollCreator());
             dollDescription.setText(thisDoll.getDollDescription());
             // Move to Detail Activity and Send Doll Data
-            itemView.setOnClickListener(new View.OnClickListener() {
-                @Override
-                public void onClick(View view) {
-                    Intent i = new Intent(context, DetailActivity.class);
-                    i.putExtra("DOLL IMAGE", thisDoll.getDollImage());
-                    i.putExtra("DOLL NAME", thisDoll.getDollName());
-                    i.putExtra("DOLL CREATOR", thisDoll.getDollCreator());
-                    i.putExtra("DOLL DESC", thisDoll.getDollDescription());
-                    context.startActivity(i);
-                }
+            itemView.setOnClickListener(view -> {
+                Intent i = new Intent(context, DetailActivity.class);
+                i.putExtra("DOLL IMAGE", thisDoll.getDollImage());
+                i.putExtra("DOLL NAME", thisDoll.getDollName());
+                i.putExtra("DOLL CREATOR", thisDoll.getDollCreator());
+                i.putExtra("DOLL DESC", thisDoll.getDollDescription());
+                context.startActivity(i);
             });
 
             // Move to Modify Activity and Send Doll Data
-            itemEdit.setOnClickListener(new View.OnClickListener() {
-                @Override
-                public void onClick(View view) {
-                    Log.i("Tampilin ID yang ke Get", thisDoll.getDollId());
-                    Intent i = new Intent(context, ModifyActivity.class);
-                    i.putExtra("DOLL ID", thisDoll.getDollId());
-                    i.putExtra("DOLL IMAGE", thisDoll.getDollImage());
-                    i.putExtra("DOLL NAME", thisDoll.getDollName());
-                    i.putExtra("DOLL CREATOR", thisDoll.getDollCreator());
-                    i.putExtra("DOLL DESC", thisDoll.getDollDescription());
-                    context.startActivity(i);
-                }
+            itemEdit.setOnClickListener(view -> {
+                Intent i = new Intent(context, ModifyActivity.class);
+                i.putExtra("DOLL ID", thisDoll.getDollId());
+                i.putExtra("DOLL IMAGE", thisDoll.getDollImage());
+                i.putExtra("DOLL NAME", thisDoll.getDollName());
+                i.putExtra("DOLL CREATOR", thisDoll.getDollCreator());
+                i.putExtra("DOLL DESC", thisDoll.getDollDescription());
+                context.startActivity(i);
             });
 
             // Remove Doll Data Based on Position in Arraylist
-            itemDelete.setOnClickListener(new View.OnClickListener() {
-                @Override
-                public void onClick(View view) {
-                    String getId = thisDoll.getDollId();
-                    dbDoll.deleteDoll(getId);
-                    deleteItem(thisDoll);
-                    Toast.makeText(context, thisDoll.getDollName() + " Delete Successfully", Toast.LENGTH_SHORT).show();
-                }
+            itemDelete.setOnClickListener(view -> {
+                String getId = thisDoll.getDollId();
+                dbDoll.deleteDoll(getId);
+                deleteItem(thisDoll);
+                Toast.makeText(context, thisDoll.getDollName() + " Delete Successfully", Toast.LENGTH_SHORT).show();
             });
         }
         return convertView;

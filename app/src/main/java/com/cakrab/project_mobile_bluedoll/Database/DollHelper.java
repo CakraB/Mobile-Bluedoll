@@ -4,10 +4,8 @@ import android.content.ContentValues;
 import android.content.Context;
 import android.database.Cursor;
 import android.database.sqlite.SQLiteDatabase;
-import android.widget.ArrayAdapter;
 
 import com.cakrab.project_mobile_bluedoll.Doll;
-import com.cakrab.project_mobile_bluedoll.DollAdapter;
 
 import java.util.ArrayList;
 
@@ -21,14 +19,14 @@ public class DollHelper {
 
     public boolean createDoll(String name, String creator, String description, String image) {
         sqLiteDatabase = databaseHelper.getWritableDatabase();
-        ContentValues contentValues = new ContentValues();
-        contentValues.put("name", name);
-        contentValues.put("creator", creator);
-        contentValues.put("description", description);
-        contentValues.put("image", image);
-        long queryResult = sqLiteDatabase.insert(databaseHelper.TABLE_DOLL, null, contentValues);
+        ContentValues values = new ContentValues();
+        values.put("name", name);
+        values.put("creator", creator);
+        values.put("description", description);
+        values.put("image", image);
+        long query = sqLiteDatabase.insert(databaseHelper.TABLE_DOLL, null, values);
         // If Something Wrong return false
-        if (queryResult == -1) {
+        if (query == -1) {
             return false;
         }
         return true;
@@ -41,7 +39,7 @@ public class DollHelper {
         String sql = "SELECT * FROM " + databaseHelper.TABLE_DOLL;
         Cursor cursor = sqLiteDatabase.rawQuery(sql, null);
 
-        while(cursor.moveToNext()) {
+        while (cursor.moveToNext()) {
             String id = cursor.getString(0);
             String name = cursor.getString(1);
             String creator = cursor.getString(2);
@@ -56,15 +54,15 @@ public class DollHelper {
 
     public boolean updateDoll(String id, String name, String creator, String description, String image) {
         sqLiteDatabase = databaseHelper.getWritableDatabase();
-        ContentValues contentValues = new ContentValues();
-        contentValues.put("id", id);
-        contentValues.put("name", name);
-        contentValues.put("creator", creator);
-        contentValues.put("description", description);
-        contentValues.put("image", image);
-        long queryResult = sqLiteDatabase.update(databaseHelper.TABLE_DOLL, contentValues, "id = ?", new String[]{id});
+        ContentValues values = new ContentValues();
+        values.put("id", id);
+        values.put("name", name);
+        values.put("creator", creator);
+        values.put("description", description);
+        values.put("image", image);
+        long query = sqLiteDatabase.update(databaseHelper.TABLE_DOLL, values, "id = ?", new String[]{id});
         // If Something Wrong return false
-        if (queryResult > 0) {
+        if (query > 0) {
             return true;
         } else {
             return false;
@@ -73,9 +71,9 @@ public class DollHelper {
 
     public boolean deleteDoll(String id) {
         sqLiteDatabase = databaseHelper.getWritableDatabase();
-        long queryResult = sqLiteDatabase.delete(databaseHelper.TABLE_DOLL, "id = ?", new String[]{id});
+        long query = sqLiteDatabase.delete(databaseHelper.TABLE_DOLL, "id = ?", new String[]{id});
         // If Something Wrong return false
-        if (queryResult > 0) {
+        if (query > 0) {
             return true;
         } else {
             return false;

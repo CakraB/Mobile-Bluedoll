@@ -118,15 +118,13 @@ public class RegisterActivity extends AppCompatActivity {
                 return;
             }
             // Insert New User to User Table
-            if (dbUser.createUser(getName, getEmail, getPassword, getGender)) {
+            if (dbUser.createUser(getName, getEmail, getPassword, getGender, "User")) {
                 Toast.makeText(RegisterActivity.this, "User Register Success", Toast.LENGTH_SHORT).show();
                 Intent register = new Intent(RegisterActivity.this, LoginActivity.class);
                 startActivity(register);
             } else {
                 Toast.makeText(RegisterActivity.this, "User Register Failed", Toast.LENGTH_SHORT).show();
             }
-//            // Validate Success and Redirect to Login Activity
-//            login(getEmail, getPassword);
             // Reset All Data on Input Fields
             editName.setText("");
             editEmail.setText("");

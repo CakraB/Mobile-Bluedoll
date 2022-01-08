@@ -13,16 +13,17 @@ public class UserHelper {
         this.databaseHelper = new DatabaseHelper(context);
     }
 
-    public boolean createUser(String name, String email, String password, String gender) {
+    public boolean createUser(String name, String email, String password, String gender, String role) {
         sqLiteDatabase = databaseHelper.getWritableDatabase();
-        ContentValues contentValues = new ContentValues();
-        contentValues.put("name", name);
-        contentValues.put("email", email);
-        contentValues.put("password", password);
-        contentValues.put("gender", gender);
-        long queryResult = sqLiteDatabase.insert(databaseHelper.TABLE_USER, null, contentValues);
+        ContentValues values = new ContentValues();
+        values.put("name", name);
+        values.put("email", email);
+        values.put("password", password);
+        values.put("gender", gender);
+        values.put("role", role);
+        long query = sqLiteDatabase.insert(databaseHelper.TABLE_USER, null, values);
         // If Something Wrong return false
-        if (queryResult == -1) {
+        if (query == -1) {
             return false;
         }
         return true;
@@ -33,6 +34,16 @@ public class UserHelper {
         String sql = "SELECT * FROM " + databaseHelper.TABLE_USER + " WHERE email= ?" + " AND password= ?";
         Cursor cursor = sqLiteDatabase.rawQuery(sql, new String[]{email, password});
         cursor.moveToLast();
+        if (cursor.getCount() > 0) {
+            return true;
+        }
+        return false;
+    }
+
+    public boolean userAccess(String admin) {
+        sqLiteDatabase = databaseHelper.getReadableDatabase();
+        String sql = "SELECT * FROM " + databaseHelper.TABLE_USER + " WHERE role =" + admin ;
+        Cursor cursor = sqLiteDatabase.rawQuery(sql, new String[]{admin});
         if (cursor.getCount() > 0) {
             return true;
         }
