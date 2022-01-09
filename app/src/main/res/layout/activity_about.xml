@@ -37,11 +37,12 @@
             android:textColor="@color/black"
             android:textSize="16sp" />
 
-        <ImageView
+        <fragment
             android:layout_width="match_parent"
-            android:layout_height="240dp"
-            android:layout_gravity="center"
-            android:src="@drawable/ic_launcher_background" />
+            android:layout_height="match_parent"
+            android:id="@+id/map"
+            android:name="com.google.android.gms.maps.SupportMapFragment" />
+
 
         <!--        <Button-->
         <!--            android:id="@+id/button_detail_back"-->
@@ -50,6 +51,7 @@
         <!--            android:layout_marginTop="24dp"-->
         <!--            android:text="Back"/>-->
     </LinearLayout>
+
 
     <!--   Put Content Before the Drawer Menu, If Not The Drawer is can't be clicked
           It is affected the Z-Index of Component -->
